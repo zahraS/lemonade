@@ -1,0 +1,673 @@
+<!-- <h1>Listing pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Published at</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.published_at %></td>
+        <td><%= link_to 'Show', [page.user, page] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 
+
+ -->
+ <body class='contrast-red '>
+    <header>
+        <div class="fixed">
+            <div class='navbar'>
+                <div class='navbar-inner'>
+                    <div class='container-fluid'>
+                        <a class='brand' href='index.html'>
+                            <i class='icon-heart-empty'></i>
+                            <span class='hidden-phone'>Flatty</span>
+                        </a>
+                        <a class='toggle-nav btn pull-left' href='#'>
+                            <i class='icon-reorder'></i>
+                        </a>
+                        <ul class='nav pull-right'>
+
+                            <li class='dropdown medium only-icon widget'>
+                                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                                    <i class='icon-rss'></i>
+                                    <div class='label'>5</div>
+                                </a>
+                                <ul class='dropdown-menu'>
+                                    <li>
+                                        <a href='#'>
+                                            <div class='widget-body'>
+                                                <div class='pull-left icon'>
+                                                    <i class='icon-user text-success'></i>
+                                                </div>
+                                                <div class='pull-left text'>
+                                                    John Doe signed up
+                                            <small class='muted'>just now</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class='divider'></li>
+                                    <li>
+                                        <a href='#'>
+                                            <div class='widget-body'>
+                                                <div class='pull-left text'>
+                                                    New Order #002
+                                            <small class='muted'>3 minutes ago</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class='divider'></li>
+
+
+                                    <li class='widget-footer'>
+                                        <a href='#'>All notifications</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='dropdown dark user-menu'>
+                                <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                                    <img alt='Mila Kunis' height='23' src='assets/images/avatar.jpg' id="imgAvatar" width='23' />
+                                    <span class='user-name hidden-phone'>Zahra</span>
+                                    <b class='caret'></b>
+                                </a>
+                                <ul class='dropdown-menu'>
+                                    <li>
+                                        <a href='user_profile.html'>
+                                            <i class='icon-user'></i>
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='user_profile.html'>
+                                            <i class='icon-cog'></i>
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <li class='divider'></li>
+                                    <li>
+                                        <a href='sign_in.html'>
+                                            <i class='icon-signout'></i>
+                                            Sign out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form accept-charset="UTF-8" action="search_results.html" class="navbar-search pull-right hidden-phone" method="get" />
+                        <div style="margin: 0; padding: 0; display: inline">
+                            <input name="utf8" type="hidden" value="&#x2713;" />
+                        </div>
+                        <button class="btn btn-link icon-search" name="button" type="submit"></button>
+                        <input autocomplete="off" class="search-query span2" id="q_header" name="q" placeholder="Search..." type="text" value="" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id='wrapper' style="margin-top: 80px;">
+        <div id='#'></div>
+        <nav class='' id='main-nav'>
+            <div class='navigation'>
+                <div class='search'>
+                    <form accept-charset="UTF-8" action="search_results.html" method="get" />
+                    <div style="margin: 0; padding: 0; display: inline">
+                        <input name="utf8" type="hidden" value="&#x2713;" />
+                    </div>
+                    <div class='search-wrapper'>
+                        <input autocomplete="off" class="search-query" id="q" name="q" placeholder="Search..." type="text" value="" />
+                        <button class="btn btn-link icon-search" name="button" type="submit"></button>
+                    </div>
+                    </form>
+                </div>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='HomePage.html'>
+                            <i class='icon-dashboard'></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a class='dropdown-collapse' href='#'>
+                            <i class='icon-calendar'></i>
+                            <span>Calender</span>
+                            <i class='icon-angle-down angle-down'></i>
+                        </a>
+                        <ul class='nav nav-stacked'>
+                            <li class=''>
+
+                                <section class="container">
+                                    <table class="cal">
+                                        <caption>
+                                            <span class="prev"><a href="index.html">&larr;</a></span>
+                                            <span class="next"><a href="index.html">&rarr;</a></span>
+                                            January 2012
+                                        </caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Mon</th>
+                                                <th>Tue</th>
+                                                <th>Wed</th>
+                                                <th>Thu</th>
+                                                <th>Fri</th>
+                                                <th>Sat</th>
+                                                <th>Sun</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="off"><a href="index.html">26</a></td>
+                                                <td class="off"><a href="index.html">27</a></td>
+                                                <td class="off"><a href="index.html">28</a></td>
+                                                <td class="off"><a href="index.html">29</a></td>
+                                                <td class="off"><a href="index.html">30</a></td>
+                                                <td class="off"><a href="index.html">31</a></td>
+                                                <td><a href="note1.html">1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="index.html">2</a></td>
+                                                <td><a href="index.html">3</a></td>
+                                                <td><a href="index.html">4</a></td>
+                                                <td><a href="index.html">5</a></td>
+                                                <td><a href="index.html">6</a></td>
+                                                <td><a href="index.html">7</a></td>
+                                                <td><a href="index.html">8</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="index.html">9</a></td>
+                                                <td><a href="index.html">10</a></td>
+                                                <td><a href="index.html">11</a></td>
+                                                <td><a href="index.html">12</a></td>
+                                                <td><a href="index.html">13</a></td>
+                                                <td><a href="index.html">14</a></td>
+                                                <td><a href="index.html">15</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="index.html">16</a></td>
+                                                <td><a href="index.html">17</a></td>
+                                                <td><a href="index.html">18</a></td>
+                                                <td><a href="index.html">19</a></td>
+                                                <td><a href="index.html">20</a></td>
+                                                <td><a href="index.html">21</a></td>
+                                                <td><a href="index.html">22</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="index.html">23</a></td>
+                                                <td><a href="index.html">24</a></td>
+                                                <td><a href="index.html">25</a></td>
+                                                <td><a href="index.html">26</a></td>
+                                                <td><a href="index.html">27</a></td>
+                                                <td class="active"><a href="index.html">28</a></td>
+                                                <td><a href="index.html">29</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="index.html">30</a></td>
+                                                <td><a href="index.html">31</a></td>
+                                                <td class="off"><a href="index.html">1</a></td>
+                                                <td class="off"><a href="index.html">2</a></td>
+                                                <td class="off"><a href="index.html">3</a></td>
+                                                <td class="off"><a href="index.html">4</a></td>
+                                                <td class="off"><a href="index.html">5</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+
+
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class=''>
+                        <a class='dropdown-collapse' href='#'>
+                            <i class='icon-edit'></i>
+                            <span>Best Friends</span>
+                            <i class='icon-angle-down angle-down'></i>
+                        </a>
+                        <ul class='nav nav-stacked'>
+                            <li class=''>
+                                <a href='form_styles.html'>
+                                    <i class='icon-caret-right'></i>
+                                    <span>yalda</span>
+                                </a>
+                            </li>
+                            <li class=''>
+                                <a href='form_components.html'>
+                                    <i class='icon-caret-right'></i>
+                                    <span>sara</span>
+                                </a>
+                            </li>
+                            <li class=''>
+                                <a href='validations.html'>
+                                    <i class='icon-caret-right'></i>
+                                    <span>sahar</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class='dropdown-collapse ' href='#'>
+                            <i class='icon-group'></i>
+                            <span>Friends</span>
+                            <i class='icon-angle-down angle-down'></i>
+                        </a>
+                        <ul class='nav nav-stacked'>
+                            <li class=''>
+                                <a href='ui_elements.html'>
+                                    <i class='icon-caret-right'></i>
+                                    <span>zaza</span>
+                                </a>
+                            </li>
+                            <li class=''>
+                                <a href='widgets.html'>
+                                    <i class='icon-caret-right'></i>
+                                    <span>setare</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class='dropdown-collapse ' href='#'>
+                            <i class='icon-cogs'></i>
+                            <span>Impotant Things</span>
+                            <i class='icon-angle-down angle-down'></i>
+                        </a>
+                        <ul class='nav nav-stacked'>
+                            <li class=''>
+                                <a href='meetings.html'>
+                                    <i class='icon-bar-chart'></i>
+                                    <span>Meetings</span>
+                                </a>
+                            </li>
+                            <li class=''>
+                                <a href='birthdates.html'>
+                                    <i class='icon-envelope'></i>
+                                    <span>Birth Dates</span>
+                                </a>
+                            </li>
+                           <!--  <li class=''>
+                                <a href='todolist.html'>
+                                    <i class='icon-comments'></i>
+                                    <span>ToDoList</span>
+                                </a>
+                            </li> -->
+                            <li class=''>
+                               
+                                    <%= link_to 'ToDoList', tasks_path%><i class='icon-comments'></i>
+                                    
+                            </li>
+                            <li class=''>
+                                <a href='assignements.html'>
+                                    <i class='icon-pencil'></i>
+                                    <span>Assignments</span>
+                                </a>
+                            </li>
+                            <li class=''>
+                                <a href='filetrees.html'>
+                                    <i class='icon-list-ul'></i>
+                                    <span>Alerts</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+
+        <section id='content'>
+            <div class='container-fluid'>
+                <div class='row-fluid' id='content-wrapper'>
+                    <div class='span12'>
+                    </div>
+                    <div class="middle">
+
+                        <!-- note -->
+                        <div class='span6'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header blue-background'>
+                                        <div class='title'>
+                                            <div class='icon-envelope-alt'></div>
+                                            Note
+                                        </div>
+                                        <div class='actions'>
+                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+                                        <textarea class="span12 wysihtml5" cols="40" id="body_" name="body[]" placeholder="Tell sth about your day" rows="5" style="height: 100px;">
+                                        </textarea>
+                                        <div class='text-right'>
+                                            <a href="#" class="btn btn-primary" id="btnSubmit">Submit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="posts">
+                                <!-- #for item in @collection -->
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header blue-background'>
+                                        <div class='title'>
+                                            <div class='icon-envelope-alt'></div>
+                                            @name
+                                        </div>
+                                        <div class='actions'>
+                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+                                        <div class="text">
+                                            @text
+                                        </div>
+                                        <div class='text-right'>
+                                            <div class="cmTxt" style="">
+                                                <input type="text" data-="@id" />
+                                            </div>
+                                            <a href="#" data-="@id" class="btn btn-primary cm">Comment</a>
+                                            <a href="#" data-="@id" class="btn btn-primary like">Like</a>
+                                        </div>
+                                        <div class="cms">
+                                            <!-- #for item in @PostComments -->
+                                            <div class="cm">
+                                                @PostComments.text
+                                            </div>
+                                            <!-- #end -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <!-- #end -->
+                            </div>
+                        </div>
+                        <!-- text -->
+                    </div>
+                    <div class='nime3'>
+
+                        <!-- evaluation -->
+                        <div class='span6'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header green-background'>
+                                        <div class='title'>
+                                            <div class='icon-tasks'></div>
+                                            Evaluation
+                                        </div>
+                                        <div class='actions'>
+
+                                            <a href="#" class="btn box-collapse btn-mini btn-link o_0"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+                                        <ul class='unstyled tasks'>
+                                            <li>
+                                                <div class='task'>
+                                                    <span class='pull-left'>
+                                                        <a href='#'>Happy</a>
+                                                    </span>
+                                                    <small class='pull-right'>@Happy %</small>
+                                                </div>
+                                                <div class='progress progress-small'>
+                                                    <div class='bar' style='width: @Happy%'></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class='task'>
+                                                    <span class='pull-left'>
+                                                        <a href='#'>Angry</a>
+                                                    </span>
+                                                    <small class='pull-right'>@Angry%</small>
+                                                </div>
+                                                <div class='progress progress-danger progress-small'>
+                                                    <div class='bar' style='width: @Angry%'></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class='task'>
+                                                    <span class='pull-left'>
+                                                        <a href='#'>depressed</a>
+                                                    </span>
+                                                    <small class='pull-right'>@depressed%</small>
+                                                </div>
+                                                <div class='progress progress-success progress-small progress-striped'>
+                                                    <div class='bar' style='width: @depressed%'></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class='task'>
+                                                    <span class='pull-left'>
+                                                        <a href='#'>successful</a>
+                                                    </span>
+                                                    <small class='pull-right'>@successful%</small>
+                                                </div>
+                                                <div class='progress progress-warning progress-small'>
+                                                    <div class='bar' style='width: @successful%'></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- evaluation -->
+
+                        <!-- message -->
+                        <div class='span6 msg'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header green-background'>
+                                        <div class='title'>
+                                            <div class='icon-tasks'></div>
+                                            Message
+                                        </div>
+                                        <div class='actions'>
+
+                                            <a href="#" class="btn box-collapse btn-mini btn-link o_0"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+
+
+                                        <form accept-charset="UTF-8" action="index.html" method="get" />
+                                        <div style="margin: 0; padding: 0; display: inline">
+                                            <input name="utf8" type="hidden" value="&#x2713;" />
+                                        </div>
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <input class="span12" id="name" name="friendname" placeholder="Your friend's name" type="text" value="" />
+                                            </div>
+                                        </div>
+                                        <!--  <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <input class="span12" id="password" name="password" placeholder="Password" type="password" value="" />
+                        <i class='icon-lock muted'></i>
+                    </div>
+                </div> -->
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <label>Message</label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <select class="form-control">
+                                                    <option>Public</option>
+                                                    <option>Private</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-block" name="button" type="submit">Send</button>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- msg -->
+
+                        <!-- disscussion -->
+                        <!--   <div class='span6 disscus'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header green-background'>
+                                        <div class='title'>
+                                            <div class='icon-envelope-alt'></div>
+                                            Disscussion
+                                        </div>
+                                        <div class='actions'>
+
+                                            <a href="#" class="btn box-collapse btn-mini btn-link o_0"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+
+
+                                        <form accept-charset="UTF-8" action="index.html" method="get" />
+                                        <div style="margin: 0; padding: 0; display: inline">
+                                            <input name="utf8" type="hidden" value="&#x2713;" />
+                                        </div>
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <input class="span12" id="name" name="friendname" placeholder="It's about what?" type="text" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <!--                         <label>Message</label>
+ -->
+                        <!--                       <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+
+                                        <button class="btn btn-block" name="button" type="submit">Publish</button>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <!-- disscussion -->
+                    </div>
+
+                </div>
+        </section>
+    </div>
+
+
+<script type="text/javascript">
+    $('#btnSubmit').click(function (e) {
+        e.preventDefault();
+        var text = ''; // get from editor
+
+        $.ajax({
+            cache: false,
+            async: true,
+            type: "POST",
+            dataType: "json",
+            url: "/submitPost",
+            data: '{ "text": "' + text + '" }',
+            contentType: "application/json;charset=utf-8",
+            success: function (msg) {
+                if (msg == true) {
+                    var newPost = '';
+                    newPost += '<div class="span12 box box-nomargin"><div class="box-header blue-background"><div class="title"><div class="icon-envelope-alt"></div>';
+                    newPost += '@userName'; // from server
+                    newPost += '</div><div class="actions"><a href="#" class="btn box-collapse btn-mini btn-link"><i></i></a></div></div><div class="box-content"><div class="text">';
+                    newPost += text;
+                    newPost += '</div><div class="text-right"><a href="#" class="btn btn-primary like">Like</a></div></div></div>';
+                }
+            },
+            error: function (e) {
+
+            }
+        });
+
+    });
+
+    $('.like').click(function (e) {
+        e.preventDefault();
+        var id = $(this).attr('data-');
+        var item = this;
+        $(item).fadeOut();
+        $.ajax({
+            cache: false,
+            async: true,
+            type: "POST",
+            dataType: "json",
+            url: "/submitPost",
+            data: '{ "text": "' + text + '" }',
+            contentType: "application/json;charset=utf-8",
+            success: function (msg) {
+                if (msg == true) {
+                    //$(item).fadeOut();
+                }
+            },
+            error: function (e) {
+
+            }
+        });
+    });
+
+    $('#imgAvatar').click(function (e) {
+        $("#frmUpload")[0].contentWindow.openUpload();
+    });
+
+    $('.cm').click(function (e) {
+        e.preventDefault();
+        var text = '';
+        var item = this;
+        $('.cmTxt input').each(function () {
+            if ($(this).attr('data-') == $(this).attr('data-')) {
+                if ($(this).val() != '') {
+                    text = $(this).val();
+                    $('.cms').append('<div class="cm">' + text + '</div>');
+                    $(this).val('');
+                    $.ajax({
+                        cache: false,
+                        async: true,
+                        type: "POST",
+                        dataType: "json",
+                        url: "/submitComment",
+                        data: '{ "text": "' + text + '" }',
+                        contentType: "application/json;charset=utf-8",
+                        success: function (msg) {
+                            if (msg == true) {
+                                var newPost = '';
+                            }
+                        },
+                        error: function (e) {
+
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+</script>

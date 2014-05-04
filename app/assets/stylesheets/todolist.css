@@ -1,0 +1,57 @@
+ 
+.contrast-red header .navbar .navbar-inner {
+       background-color:  #58134D !important;
+
+}
+
+
+ .contrast-purple header .navbar .navbar-inner {
+            background-color:  #58134D !important;
+    }
+    .contrast-purple header .navbar .navbar-inner .toggle-nav {
+        background-color: #D864E2;
+    }
+    .contrast-purple header .navbar .navbar-inner .medium {
+        background: #D864E2;
+    }
+
+    header .navbar .navbar-inner .widget .dropdown-menu > li.widget-footer a {
+        background: #D864E2;
+    }
+    .contrast-purple header .navbar .navbar-inner .dark {
+        background: #BA39C5;
+    }
+    #main-nav .navigation > .nav > li > a [class^="icon-"], #main-nav .navigation > .nav > li > a [class*=" icon-"] {
+
+        color: #D864E2;
+    }
+    /* fonte neveshtehaye chap*/
+    #main-nav .navigation > .nav {
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    .container{
+        width: 100%;
+        margin-left: 10%;
+    }
+    #main-nav-bg {
+        width: 20%;
+    }
+    #main-nav {
+        width: 20%;
+    }
+    .cal caption {
+        background-color: #58134D;
+        color: #fff;
+    }
+    .btn-group.open .btn-success.dropdown-toggle, .btn.btn-success {
+        background-color: #58134D;
+}
+    .todo-list ul > li.important {
+        border-left: 2px solid #D864E2;
+            }
+
+    .todo-list ul > li .actions .important {
+        color: #D864E2;
+    }

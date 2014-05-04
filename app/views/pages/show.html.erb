@@ -1,0 +1,31 @@
+<p>
+  <strong>Published at:</strong>
+  <%= @page.published_at %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user.email %>
+</p>
+
+<%= content_tag_for :section, @page.notes do |note| %>
+	<p>
+		<%= note.user.email %>: <%= simple_format note.content %>
+	</p>
+<% end %>
+<!--
+<%= @page.notes.each do |note| %>
+  <section><p><%= note.content%></p></section>
+<% end %>
+-->
+
+<% note = @page.notes.new %>
+<%= simple_form_for([@user, @page, note]) do |f| %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= link_to 'Back', user_pages_path(@user) %>
+
+<%# link_to 'Back', [@user, :pages] %>
+

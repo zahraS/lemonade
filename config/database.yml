@@ -1,0 +1,19 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: lemonade_development
+
+test:
+  <<: *default
+  database: lemonade_test
+
+production:
+  <<: *default
+  database: lemonade_production
+  username: lemonade
+  password: <%= ENV['LEMONADE_DATABASE_PASSWORD'] %>

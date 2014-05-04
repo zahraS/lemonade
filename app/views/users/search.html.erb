@@ -1,0 +1,5 @@
+<ul>
+  <%= content_tag_for :li, @users do |user| %>
+    <%= link_to user.email, user %>
+  <% end %>
+</ul>
