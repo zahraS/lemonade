@@ -11,4 +11,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_with(@user)
   end
+
+  def follow
+    @user = User.find(params[:id])
+    @user.follows.create(follower: current_user)
+    respond_with(@user)
+  end
 end

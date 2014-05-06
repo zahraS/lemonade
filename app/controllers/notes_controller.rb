@@ -6,6 +6,20 @@ class NotesController < ApplicationController
     @note = @notes.find(params[:id])
   end
 
+  def like
+    @note = @notes.find(params[:id])
+    if (@note.likes.where(user: current_user).count == 0)
+      @note.likes.create(user: current_user)
+    end
+    redirect_to [@note.page.user, @note.page]
+  end
+
+  def unlike
+    @note = @notes.find(params[:id])
+    @note.likes.where(user: current_user).destroy_all
+    redirect_to [@note.page.user, @note.page]
+  end
+
   def create
     @note = @notes.new(note_params)
     @note.user = current_user

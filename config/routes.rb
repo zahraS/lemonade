@@ -13,7 +13,13 @@ Rails.application.routes.draw do
 
 
   	resources :pages, only: [:show, :index] do
-  		resources :notes, only: [:edit, :create, :destroy, :update]
+  		resources :notes, only: [:edit, :create, :destroy, :update] do
+        member do
+          post :like
+          delete :unlike
+        end
+        resources :comments, only: [:create]
+      end
   	end
   end
 

@@ -9,16 +9,40 @@
 </p>
 
 <%= content_tag_for :section, @page.notes do |note| %>
-	<p>
-		<%= note.user.email %>: <%= simple_format note.content %>
-	</p>
-<% end %>
-<!--
-<%= @page.notes.each do |note| %>
-  <section><p><%= note.content%></p></section>
-<% end %>
--->
+  <p>
+    <%= note.user.email %>: <%= simple_format note.content %>
+  </p>
+  <div>
+    <p>
+      <h3>Likes<h3>
+      <% note.likes.limit(3).each do |like| %>
+        <%= like.user.email %>
+      <% end %>
+      <% if note.likes.count > 3 %>
+        and <%= note.likes.count - 3 %> others
+      <% end %>
+    </p>
+    <% if note.likes.where(user: current_user).count > 0 %>
+      <%= link_to 'Unlike!', unlike_user_page_note_path(@page.user, @page, note), method: :delete %>
+    <% else %>
+      <%= link_to 'Like!', like_user_page_note_path(@page.user, @page, note), method: :post %>
+    <% end %>
+  </div>
 
+  <div>
+    <%= content_tag_for :section, note.comments do |comment| %>
+      <%= comment.user.email %>:
+      <%= simple_format comment.content %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for([@page.user, @page, note, note.comments.new]) do |f|%>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>
+
+<h2>New Note</h2>
 <% note = @page.notes.new %>
 <%= simple_form_for([@user, @page, note]) do |f| %>
   <%= f.input :content %>
