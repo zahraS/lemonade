@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @emotion.page %>
+</p>
+
+<p>
+  <strong>Emotion type:</strong>
+  <%= @emotion.emotion_type %>
+</p>
+
+<%= link_to 'Edit', edit_emotion_path(@emotion) %> |
+<%= link_to 'Back', emotions_path %>

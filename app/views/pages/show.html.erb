@@ -8,6 +8,19 @@
   <%= @user.email %>
 </p>
 
+<section>
+  <ul>
+    <%= content_tag_for :li, @page.emotions do |e| %>
+      <%= e.emotion_type %>
+    <% end %>
+  </ul>
+
+  <%= simple_form_for [@user, @page, @page.emotions.new] do |f| %>
+    <%= f.input :emotion_type, collection: ["happy", "sad", "funny"] %>
+    <%= f.button :submit %>
+  <% end %>
+</section>
+
 <%= content_tag_for :section, @page.notes do |note| %>
   <p>
     <%= note.user.email %>: <%= simple_format note.content %>

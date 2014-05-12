@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :users, only: [:search, :show], path: 'profiles' do
   	collection do
   	  get :search
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 
 
   	resources :pages, only: [:show, :index] do
+      resources :emotions, only: [:create]
   		resources :notes, only: [:edit, :create, :destroy, :update] do
         member do
           post :like
