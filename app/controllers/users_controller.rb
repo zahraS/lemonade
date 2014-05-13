@@ -14,7 +14,17 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find(params[:id])
-    @user.follows.create(follower: current_user)
-    respond_with(@user)
+    
+    raise if @user.followers.include? current_user
+
+    # @user.follows.create(follower: current_user)
+    @user.followers << current_user
+    redirect_to @user
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    @user.follows.where(follower: current_user).destroy_all
+    redirect_to @user
   end
 end

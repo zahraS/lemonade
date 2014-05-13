@@ -1,4 +1,4 @@
-<p>
+<!-- <p>
   <strong>Published at:</strong>
   <%= @page.published_at %>
 </p>
@@ -11,7 +11,7 @@
 <section>
   <ul>
     <%= content_tag_for :li, @page.emotions do |e| %>
-      <%= e.emotion_type %>
+      <%= e.emotion_type %> <%= link_to "x", [@user, @page, e], method: :delete %>
     <% end %>
   </ul>
 
@@ -63,3 +63,374 @@
 <% end %>
 
 <%= link_to 'Back', user_pages_path(@user) %>
+ -->
+
+            <iframe id="frmUpload" src="upload.html" height="0" width="0" style="border: 0px;"></iframe>
+            <div class='container-fluid'>
+                <div class='row-fluid' id='content-wrapper'>
+                    
+                    <div class="middle">
+                        <div class="blue-background emotionals title">
+                            <div class="title">
+                                How Was Today?
+                            </div>
+                            <div class="emo happy" data-="1">&nbsp</div>
+                            <div class="emo dep" data-="2">&nbsp</div>
+                            <div class="emo angry"  data-="3">&nbsp</div>
+                            <div class="emo success"  data-="4">&nbsp</div>
+                        </div>
+                        <div class="blue-background calHolder title">
+                            <div class="title">
+                                Notes on:
+                            </div>
+                        <input type="text" id="_cal" data-date-viewmode="years" />
+                        </div>
+                        <!-- note -->
+                        <div class='span6'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header blue-background'>
+                                        <div class='title'>
+                                            <div class='icon-envelope-alt'></div>
+                                            Note
+                                       
+                                        </div>
+                                        <div class='actions'>
+                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+                                        <textarea class="span12 wysihtml5" cols="40" id="body_" name="body[]" placeholder="Tell sth about your day" rows="5" style="height: 100px;">
+                                        </textarea>
+                                        <div class='text-right'>
+                                            <a href="#" class="btn btn-primary" id="btnSubmit">Submit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="posts">
+                                <!-- #for item in @collection -->
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header blue-background'>
+                                        <div class='title'>
+                                            <div class='icon-envelope-alt'></div>
+                                                me
+                                       
+                                        </div>
+                                        <div class='actions'>
+                                            <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+                                        <div class="text">
+                                            Todey sth awesome happend to meeeeee, I got admission yeaaaaaaaaaaah:D
+                                       
+                                        </div>
+                                        <div class='text-right'>
+                                            <div class="cmTxt" style="">
+                                                <input type="text" data-="@id" />
+                                            </div>
+                                            <a href="#" data-="@id" class="btn btn-primary like">Like</a>
+                                        </div>
+                                        <div class="cms">
+                                            <!-- #for item in @PostComments -->
+                                            <div class="cm">
+                                              <p> sahar: I m soooo happy for uuuuuuu:*</p>
+                                               sara : so proud of uuu
+                                            </div>
+                                            <!-- #end -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <!-- #end -->
+                            </div>
+                        </div>
+                        <!-- text -->
+                    </div>
+                    <!-- middle -->
+                    <div class='nime3'>
+
+                        <!-- evaluation -->
+                        <div class='span6'>
+        <div class='row-fluid'>
+            <div class='span12 box box-nomargin'>
+                <div class='box-header green-background'>
+                    <div class='title'>
+                        <div class='icon-tasks'></div>
+                        Evaluation
+                    </div>
+                    <div class='actions'>
+                        
+                        <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                        </a>
+                    </div>
+                </div>
+                <div class='box-content'>
+                    <ul class='unstyled tasks'>
+                        <li>
+                            <div class='task'>
+                <span class='pull-left'>
+                  <a href='#'>Happy</a>
+                </span>
+                                <small class='pull-right'>40%</small>
+                            </div>
+                            <div class='progress progress-small'>
+                                <div class='bar' style='width: 40%'></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='task'>
+                <span class='pull-left'>
+                  <a href='#'>Angry</a>
+                </span>
+                                <small class='pull-right'>80%</small>
+                            </div>
+                            <div class='progress progress-danger progress-small'>
+                                <div class='bar' style='width: 80%'></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='task'>
+                <span class='pull-left'>
+                  <a href='#'>depressed</a>
+                </span>
+                                <small class='pull-right'>58%</small>
+                            </div>
+                            <div class='progress progress-success progress-small progress-striped'>
+                                <div class='bar' style='width: 68%'></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='task'>
+                <span class='pull-left'>
+                  <a href='#'>successful</a>
+                </span>
+                                <small class='pull-right'>100%</small>
+                            </div>
+                            <div class='progress progress-warning progress-small'>
+                                <div class='bar' style='width: 100%'></div>
+                            </div>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                        <!-- evaluation -->
+
+                        <!-- message -->
+                        <div class='span6 msg'>
+                            <div class='row-fluid'>
+                                <div class='span12 box box-nomargin'>
+                                    <div class='box-header green-background'>
+                                        <div class='title'>
+                                            <div class='icon-tasks'></div>
+                                            Message
+                                       
+                                        </div>
+                                        <div class='actions'>
+
+                                            <a href="#" class="btn box-collapse btn-mini btn-link o_0"><i></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content'>
+
+
+                                        <form accept-charset="UTF-8" action="index.html" method="get" />
+                                        <div style="margin: 0; padding: 0; display: inline">
+                                            <input name="utf8" type="hidden" value="&#x2713;" />
+                                        </div>
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <input class="span12" id="name" name="friendname" placeholder="Your friend's name" type="text" value="" />
+                                            </div>
+                                        </div>
+                                        <!--  <div class='row-fluid'>
+                    <div class='span12 icon-over-input'>
+                        <input class="span12" id="password" name="password" placeholder="Password" type="password" value="" />
+                        <i class='icon-lock muted'></i>
+                    </div>
+                </div> -->
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <label>Message</label>
+                                                <textarea class="form-control"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class='row-fluid'>
+                                            <div class='span12 icon-over-input'>
+                                                <select class="form-control">
+                                                    <option>Public</option>
+                                                    <option>Private</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-block" name="button" type="submit">Send</button>
+                                        </form>
+
+
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- msg -->
+
+                       
+                    </div>
+
+                </div>
+      
+
+ <script type="text/javascript">
+        $('#btnSubmit').click(function (e) {
+            e.preventDefault();
+            var text = $('#body_').val(); // get from editor
+
+            $.ajax({
+                cache: false,
+                async: true,
+                type: "POST",
+                dataType: "json",
+                url: "/submitPost",
+                data: '{ "text": "' + text + '" }',
+                contentType: "application/json;charset=utf-8",
+                success: function (msg) {
+                    if (msg == true) {
+
+                    }
+                },
+                error: function (e) {
+
+                }
+            });
+            var newPost = '';
+            newPost += '<div class="span12 box box-nomargin"><div class="box-header blue-background"><div class="title"><div class="icon-envelope-alt"></div>';
+            newPost += '@userName'; // from server
+            newPost += '</div><div class="actions"><a href="#" class="btn box-collapse btn-mini btn-link"><i></i></a></div></div><div class="box-content"><div class="text">';
+            newPost += text;
+            newPost += '<div class="text-right"><div class="cmTxt" style=""><input type="text" data-="@id" /></div>';
+            newPost += '<a href="#" data-="@id" class="btn btn-primary like">Like</a></div><div class="cms"></div></div></div>';
+            
+            $('.posts').append(newPost);
+        });
+
+        $('.like').click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-');
+            var item = this;
+            $(item).fadeOut();
+            $.ajax({
+                cache: false,
+                async: true,
+                type: "POST",
+                dataType: "json",
+                url: "/submitPost",
+                data: '{ "text": "' + text + '" }',
+                contentType: "application/json;charset=utf-8",
+                success: function (msg) {
+                    if (msg == true) {
+                        //$(item).fadeOut();
+                    }
+                },
+                error: function (e) {
+
+                }
+            });
+        });
+
+        $('#imgAvatar').click(function (e) {
+            $("#frmUpload")[0].contentWindow.openUpload();
+        });
+
+        $('.cmTxt input').live('keydown' ,function (e) {
+            var item = this;
+            if (e.which == 13) {
+                var text = '';
+                var item = this;
+                $('.cmTxt input').each(function () {
+                    if ($(this).attr('data-') == $(this).attr('data-')) {
+                        if ($(this).val() != '') {
+                            text = $(this).val();
+                            $(item).parent().parent().next('.cms').append('<div class="cm">' + text + '</div>');
+                            $(item).val('');
+                            $.ajax({
+                                cache: false,
+                                async: true,
+                                type: "POST",
+                                dataType: "json",
+                                url: "/submitComment",
+                                data: '{ "text": "' + text + '" }',
+                                contentType: "application/json;charset=utf-8",
+                                success: function (msg) {
+                                    if (msg == true) {
+                                        var newPost = '';
+                                    }
+                                },
+                                error: function (e) {
+
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
+        $('.toggle-nav.btn.pull-left').click(function (e) {
+            e.preventDefault();
+            if ($('.toggle-nav.btn.pull-left').hasClass('d_') == false) {
+                $('#main-nav').animate({ width: '3%' }, 'normal');
+                $('#content').animate({ 'margin-left': '5%' }, 'normal');
+                $('#content').animate({ width: '90%' }, 'slow');
+                $('.toggle-nav.btn.pull-left').addClass('d_')
+            }
+            else {
+                $('#main-nav').animate({ width: '20%' }, 'normal');
+                $('#content').animate({ 'margin-left': '20%' }, 'normal');
+                $('#content').animate({ width: '70%' }, 'normal');
+                $('.toggle-nav.btn.pull-left').removeClass('d_')
+            }
+        });
+        
+        $('.themes .theme').click(function () {
+            var theme = $(this).attr('data-');
+            $('head').append('<link rel="stylesheet" type="text/css" href="' + theme + '"/>');
+        });
+
+        // setEvaluation
+        $('.emotionals .emo').click(function () {
+            var emo = $(this).attr('data-');
+            $('.emotionals').slideUp();
+            $.ajax({
+                cache: false,
+                async: true,
+                type: "POST",
+                dataType: "json",
+                url: "/setEvaluation",
+                data: '{ "emo": "' + emo + '" }',
+                contentType: "application/json;charset=utf-8",
+                success: function (msg) {
+                    if (msg == true) {
+                        
+                    }
+                },
+                error: function (e) {
+
+                }
+            });
+        });
+
+        $('#_cal').datepicker();
+
+</script>

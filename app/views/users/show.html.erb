@@ -1,2 +1,110 @@
-<h1><%= @user.email %></h1>
+<!-- <h1><%= @user.email %></h1>
 <p><%= @user.email %></p>
+
+<% if current_user.id == @user.id %>
+  It's you!
+<% elsif @user.followers.include? current_user %>
+  <%= link_to "unfollow" , unfollow_user_path(@user), method: :delete %>
+<% else %>
+  <%= link_to "follow" , follow_user_path(@user), method: :post %>
+<% end %>
+
+<h1>Followers</h1>
+<ul>
+  <%= content_tag_for :li, @user.followers do |user| %>
+    <%= user.email %>
+  <% end %>
+</ul> -->
+    <div class='container-fluid'> 
+        <div class='row-fluid' id='content-wrapper'> 
+            <div class='span12'> 
+                <div class='page-header'> 
+                    <h3 class='pull-left'> 
+                        <i class='icon-user'></i> 
+                        <span>User profile</span> 
+                    </h3> 
+                    
+                </div> 
+                <div class='row-fluid'> 
+                    <div class='span3 box'> 
+                        <div class='box-content'> 
+                            <img alt="230x230&amp;text=photo" src="http://placehold.it/230x230&amp;text=Photo" /> 
+                        </div> 
+                    </div> 
+                    <div class='span9 box'> 
+                        <div class='box-content box-double-padding'> 
+                            <form class='form' style='margin-bottom: 0;' /> 
+                                <fieldset> 
+                                    <div class='span4'> 
+                                        <div class='lead'> 
+                                            <i class='icon-signin text-contrast'></i> 
+                                            Login info
+                                        </div> 
+                                        
+                                    </div> 
+                                    <div class='span7 offset1'> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'><h3>E-mail</h3></label> 
+                                            z@yahoo.com 
+                                        </div> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'><h3>Password</h3></label> 
+                                            
+                                        </div> 
+                                        <hr class='hr-normal' /> 
+                                        
+                                        
+                                    </div> 
+                                </fieldset> 
+                                <hr class='hr-normal' /> 
+                                <fieldset> 
+                                    <div class='span4 box'> 
+                                        <div class='lead'> 
+                                            <i class='icon-user text-contrast'></i> 
+                                            Personal info
+                                        </div> 
+                                        
+                                    </div> 
+                                    <div class='span7 offset1'> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'>Display name</label> 
+                                            
+                                        </div> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'>Last name</label> 
+                                            
+                                        </div> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'>Sex</label> 
+                                            
+                                        </div> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'>Age</label> 
+                                            
+                                        </div> 
+                                        <hr /> 
+                                        <div class='control-group'> 
+                                            <label class='control-label'>Bio</label> 
+                                            
+                                        </div> 
+                                    </div> 
+                                </fieldset> 
+                                <div class='form-actions' style='margin-bottom: 0;'> 
+
+                                
+                                    <div class='text-right'> 
+                                        <div class='btn btn-primary btn-large'>
+                                          <%= link_to current_user do %> 
+                                            
+                                            Edit
+                                            <% end %>
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </form> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 

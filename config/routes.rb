@@ -4,17 +4,14 @@ Rails.application.routes.draw do
   resources :users, only: [:search, :show], path: 'profiles' do
   	collection do
   	  get :search
-  	  # /profiles/search?q=zah
+  	end
+  	member do
+      post :follow
+      delete :unfollow
   	end
 
-  	# mamber do
-  	#	get :salam
-  	#	# /profiles/1/salam
-  	# end
-
-
   	resources :pages, only: [:show, :index] do
-      resources :emotions, only: [:create]
+      resources :emotions, only: [:create, :destroy]
   		resources :notes, only: [:edit, :create, :destroy, :update] do
         member do
           post :like
@@ -28,5 +25,5 @@ Rails.application.routes.draw do
   resources :tasks
   devise_for :users
 
-  root to: "pages#index"
+  root to: "pages#today"
 end

@@ -13,11 +13,14 @@
         background-color: #58134D !important;
     }
     .contrast-red header .navbar .navbar-inner .toggle-nav {
-        background-color: #D864E2;
+        background-color: #D864E2; 
+        /*menue jam kon*/
     }
     .contrast-red header .navbar .navbar-inner .medium {
         background: none repeat scroll 0% 0% #D864E2;
-    }
+/*        padding: 1px;
+*/    }
+
 
     .navbar .nav > li > a {
         float: none;
@@ -61,6 +64,7 @@ background-color: #5F23BD;
     }
     .contrast-purple header .navbar .navbar-inner .dark {
         background: #BA39C5;
+		height: 45px;
     }
     #main-nav .navigation > .nav > li > a [class^="icon-"], #main-nav .navigation > .nav > li > a [class*=" icon-"] {
 
@@ -82,7 +86,8 @@ background-color: #5F23BD;
     }
     #main-nav {
         width: 20%;
-        margin-top: 30px;
+        position: :fixed;
+        left: :0%; top:70px;
        /* font-size: 5px;*/
     }
     a, a:hover, .btn-link, .btn-link:hover {
@@ -121,6 +126,10 @@ background-color: #5F23BD;
         border-color: transparent;
         margin-bottom: 10px;
          }
+    .evaluation{
+        font-size: 15px;
+        font-style: italic;
+    }
     .green-background {
             background-color: #58134D !important;
     }
@@ -138,14 +147,57 @@ textarea {
 select {
     width: 100%;
 }
-/*.span6 .msg{
-    margin-left: 50px;
-}
-    */
+
     .middle .span6{
     width: 100%;
 }
+/*.msg{
+    margin-left: -20px;
+}*/
+
 .contrast-red.contrast-background, .contrast-red .contrast-background 
 {
   background: #58134D !important
   }
+
+  .spantodolist{
+    height: 30px;
+  }
+
+#main-nav { overflow:hidden; }
+
+.posts { overflow:auto; height:auto; margin:1%; }
+
+.posts [class*="span"] {
+    float: left;
+    margin-left: 0px;
+    min-height: 1px;
+}
+.nime3 [class*="span"] {
+    margin-left: 0px;
+}
+.btn-link {
+    color: #fff;
+}
+
+#wrapper { overflow:visible; }
+
+.emotionals { height:40px; width:99%; margin:2.5%; padding:3px;}
+.emotionals .title{ color:#fff; font-size:19px; float:left; line-height:35px; margin-right:4%; margin-left:2%; }
+.emotionals .emo { height:30px; width:30px; float:left; margin:0.5%; cursor:pointer; }
+.emotionals .emo.happy { background:url(/assets/happy.png) center no-repeat; background-size:contain; }
+.emotionals .emo.dep { background:url(/assets/dep.png) center no-repeat;  background-size:contain;}
+.emotionals .emo.angry { background:url(/assets/angry.png) center no-repeat;  background-size:cover;}
+.emotionals .emo.success { background:url(/assets/success.png) center no-repeat;  background-size:contain;}
+
+.themes { width:20%; float:left; height:98%;}
+.themes .theme{ width:10%; float:left; height:90%; margin:5%; cursor:pointer; }
+
+.themes .theme.theme1{ background-color:#0094ff; }
+.themes .theme.theme2{ background-color:#BA39C5; }
+.themes .theme.theme3{ background-color:#ff006e; }
+.themes .theme.theme4{ background-color:#D864E2; }
+
+.calHolder { height:40px; width:99%; margin:2.5%; padding:3px;}
+.calHolder .title{ color:#fff; font-size:19px; float:left; line-height:35px; margin-right:4%; margin-left:2%; }
+#_cal { margin-left:5%; float:left; margin-top:1%; }

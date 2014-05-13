@@ -9,6 +9,14 @@ class EmotionsController < ApplicationController
     redirect_to [@user, @page]
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @page = @user.pages.where(published_at: params[:page_id]).first
+    @emotion = @page.emotions.find(params[:id])
+    @emotion.destroy
+    redirect_to [@user, @page]
+  end
+
   private
   def emotion_params
     params.require(:emotion).permit(:emotion_type)
