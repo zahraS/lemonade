@@ -1,5 +1,5 @@
 <!-- <h1><%= @user.email %></h1>
-<p><%= @user.email %></p>
+<p></p>
 
 <% if current_user.id == @user.id %>
   It's you!
@@ -21,7 +21,7 @@
                 <div class='page-header'> 
                     <h3 class='pull-left'> 
                         <i class='icon-user'></i> 
-                        <span>User profile</span> 
+                        <span><%= @user.email %> (<%= @user.profile.display_name %>) </span> 
                     </h3> 
                     
                 </div> 
@@ -30,6 +30,15 @@
                         <div class='box-content'> 
                             <img alt="230x230&amp;text=photo" src="http://placehold.it/230x230&amp;text=Photo" /> 
                         </div> 
+                        <div>
+                            <% if current_user.id == @user.id %>
+                            It's you!
+                            <% elsif @user.followers.include? current_user %>
+                            <%= link_to "unfollow" , unfollow_user_path(@user), method: :delete %>
+                            <% else %>
+                            <%= link_to "follow" , follow_user_path(@user), method: :post %>
+                            <% end %>
+                        </div>
                     </div> 
                     <div class='span9 box'> 
                         <div class='box-content box-double-padding'> 
@@ -45,11 +54,11 @@
                                     <div class='span7 offset1'> 
                                         <div class='control-group'> 
                                             <label class='control-label'><h3>E-mail</h3></label> 
-                                            z@yahoo.com 
+                                            <%= @user.email %> 
                                         </div> 
                                         <div class='control-group'> 
                                             <label class='control-label'><h3>Password</h3></label> 
-                                            
+                                            ******
                                         </div> 
                                         <hr class='hr-normal' /> 
                                         
@@ -68,39 +77,37 @@
                                     <div class='span7 offset1'> 
                                         <div class='control-group'> 
                                             <label class='control-label'>Display name</label> 
-                                            
+                                            <%= @user.profile.display_name %>
                                         </div> 
-                                        <div class='control-group'> 
-                                            <label class='control-label'>Last name</label> 
-                                            
-                                        </div> 
+
                                         <div class='control-group'> 
                                             <label class='control-label'>Sex</label> 
-                                            
+                                            <%=  @user.profile.sex %>
                                         </div> 
                                         <div class='control-group'> 
-                                            <label class='control-label'>Age</label> 
-                                            
-                                        </div> 
-                                        <hr /> 
-                                        <div class='control-group'> 
-                                            <label class='control-label'>Bio</label> 
-                                            
-                                        </div> 
-                                    </div> 
-                                </fieldset> 
-                                <div class='form-actions' style='margin-bottom: 0;'> 
-
-                                
-                                    <div class='text-right'> 
-                                        <div class='btn btn-primary btn-large'>
-                                          <%= link_to current_user do %> 
-                                            
-                                            Edit
+                                            <label class='control-label'>Age</label>
+                                            <% if @user.profile.birth_date %> 
+                                                <%= time_ago_in_words @user.profile.birth_date %>
+                                            <% else %>
+                                                No birth date!
                                             <% end %>
                                         </div> 
+
+                                        <hr /> 
+
                                     </div> 
-                                </div> 
+                                </fieldset>
+                                <% if current_user.id == @user.id %>
+                                    <div class='form-actions' style='margin-bottom: 0;'> 
+                                        <div class='text-right'> 
+                                            <div class='btn btn-primary btn-large'>
+                                              <%= link_to edit_user_registration_path do %>
+                                                Edit
+                                                <% end %>
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                <% end %>
                             </form> 
                         </div> 
                     </div> 

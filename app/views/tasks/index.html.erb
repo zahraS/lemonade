@@ -29,107 +29,107 @@
 -->
 
 
+<div class='container-fluid'>
+  <div class='row-fluid' id='content-wrapper'>
+    <div class='spantodolist'>
+    </div>
+
+    <div class='span12'>
+      <div class='page-header'>
+        <h3 class='pull-left'>
+          <i class='icon-comments'></i>
+          <span>Todo list</span>
+        </h3>
+
+      </div>
+    </div>
+
+
+    <div class='row-fluid'>
+      <div class='span12 box'>
+        <div class='row-fluid todo-list'>
+          <div class='span12 box box-nomargin'>
+            <div class='box-content box-no-padding'>
+              <div class='sortable-container'>
+                <form accept-charset="UTF-8" action="#" class="new-todo" method="post" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I=" /></div>
+                <input class='span12' id='todo_name' name='todo[name]' placeholder='Type your new todo here...' type='text' />
+                <button class='btn btn-success' type='submit'>
+                  <i class='icon-plus'></i>
+                </button>
+              </form>
+              <div class='date text-contrast'>Today</div>
+              <ul class='unstyled sortable' data-sortable-axis='y' data-sortable-connect='.sortable'>
+                <% content_tag_for :li, @tasks do |task| %>
+                  <tr>
+                    <td><%= task.done %></td>
+                    <td><%= task.description %></td>
+                    <td><%= link_to 'Show', task %></td>
+                    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+                    <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+                <li class='item'>
+                  <label class='check pull-left todo'>
+                    <input type='checkbox' />
+                    Aut qui enim aspernatur nulla odio ut.
+                  </label>
+                  <div class='actions pull-right'>
+                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
+                      <i class='icon-pencil'></i>
+                    </a>
+                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
+                      <i class='icon-remove'></i>
+                    </a>
+                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
+                      <i class='icon-bookmark-empty'></i>
+                    </a>
+                  </div>
+                </li>
+                <li class='done item'>
+                  <label class='check pull-left todo'>
+                    <input checked='checked' type='checkbox' />
+                    Sapiente iste id.
+                  </label>
+                  <div class='actions pull-right'>
+                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
+                      <i class='icon-pencil'></i>
+                    </a>
+                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
+                      <i class='icon-remove'></i>
+                    </a>
+                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
+                      <i class='icon-bookmark-empty'></i>
+                    </a>
+                  </div>
+                </li>
+                <li class='item'>
+                  <label class='check pull-left todo'>
+                    <input type='checkbox' />
+                    Enim voluptatem modi aut eaque natus.
+                  </label>
+                  <div class='actions pull-right'>
+                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
+                      <i class='icon-pencil'></i>
+                    </a>
+                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
+                      <i class='icon-remove'></i>
+                    </a>
+                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
+                      <i class='icon-bookmark-empty'></i>
+                    </a>
+                  </div>
+                </li>
 
 
 
-                      <div class='container-fluid'>
-                        <div class='row-fluid' id='content-wrapper'>
-                          <div class='spantodolist'>
-                          </div>
-                          
-                          <div class='span12'>
-                            <div class='page-header'>
-                              <h3 class='pull-left'>
-                                <i class='icon-comments'></i>
-                                <span>Todo list</span>
-                              </h3>
-                              
-                            </div>
-                          </div>
-                          
-                          
-                          <div class='row-fluid'>
-                            <div class='span12 box'>
-                              <div class='row-fluid todo-list'>
-                                <div class='span12 box box-nomargin'>
-                                  <div class='box-content box-no-padding'>
-                                    <div class='sortable-container'>
-                                      <form accept-charset="UTF-8" action="#" class="new-todo" method="post" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I=" /></div>
-                                      <input class='span12' id='todo_name' name='todo[name]' placeholder='Type your new todo here...' type='text' />
-                                      <button class='btn btn-success' type='submit'>
-                                        <i class='icon-plus'></i>
-                                      </button>
-                                    </form>
-                                    <div class='date text-contrast'>Today</div>
-                                    <ul class='unstyled sortable' data-sortable-axis='y' data-sortable-connect='.sortable'>
-                                      
-                                      <li class='item'>
-                                        <label class='check pull-left todo'>
-                                          <input type='checkbox' />
-                                          Aut qui enim aspernatur nulla odio ut.
-                                        </label>
-                                        <div class='actions pull-right'>
-                                          <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                                            <i class='icon-pencil'></i>
-                                          </a>
-                                          <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
-                                            <i class='icon-remove'></i>
-                                          </a>
-                                          <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                                            <i class='icon-bookmark-empty'></i>
-                                          </a>
-                                        </div>
-                                      </li>
-                                      <li class='done item'>
-                                        <label class='check pull-left todo'>
-                                          <input checked='checked' type='checkbox' />
-                                          Sapiente iste id.
-                                        </label>
-                                        <div class='actions pull-right'>
-                                          <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                                            <i class='icon-pencil'></i>
-                                          </a>
-                                          <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
-                                            <i class='icon-remove'></i>
-                                          </a>
-                                          <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                                            <i class='icon-bookmark-empty'></i>
-                                          </a>
-                                        </div>
-                                      </li>
-                                      
-                                    </ul>
-                                    <div class='date text-contrast'>Due Wed, Sep 19, 2013</div>
-                                    <ul class='unstyled sortable' data-sortable-axis='y' data-sortable-connect='.sortable'>
-                                      <li class='item'>
-                                        <label class='check pull-left todo'>
-                                          <input type='checkbox' />
-                                          Enim voluptatem modi aut eaque natus.
-                                        </label>
-                                        <div class='actions pull-right'>
-                                          <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                                            <i class='icon-pencil'></i>
-                                          </a>
-                                          <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
-                                            <i class='icon-remove'></i>
-                                          </a>
-                                          <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                                            <i class='icon-bookmark-empty'></i>
-                                          </a>
-                                        </div>
-                                      </li>
-                                      
-                                      
-                                      
-                                    </ul>
-                                  </div>    
-                                  <!-- 'sortable-container' -->
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        
-                      </div>
-                    </div>
+              </ul>
+            </div>    
+            <!-- 'sortable-container' -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+</div>
+</div>

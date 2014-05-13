@@ -15,7 +15,7 @@
     <% end %>
   </ul>
 
-  <%= simple_form_for [@user, @page, @page.emotions.new] do |f| %>
+  <%= simple_form_for :emotion, url: [@user, @page, :emotions] do |f| %>
     <%= f.input :emotion_type, collection: ["happy", "sad", "funny"] %>
     <%= f.button :submit %>
   <% end %>
@@ -35,49 +35,33 @@
         and <%= note.likes.count - 3 %> others
       <% end %>
     </p>
-    <% if note.likes.where(user: current_user).count > 0 %>
-      <%= link_to 'Unlike!', unlike_user_page_note_path(@page.user, @page, note), method: :delete %>
-    <% else %>
-      <%= link_to 'Like!', like_user_page_note_path(@page.user, @page, note), method: :post %>
-    <% end %>
   </div>
 
-  <div>
-    <%= content_tag_for :section, note.comments do |comment| %>
-      <%= comment.user.email %>:
-      <%= simple_format comment.content %>
-    <% end %>
-  </div>
-
-  <%= simple_form_for([@page.user, @page, note, note.comments.new]) do |f|%>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-  <% end %>
 <% end %>
 
 <h2>New Note</h2>
-<% note = @page.notes.new %>
-<%= simple_form_for([@user, @page, note]) do |f| %>
-  <%= f.input :content %>
-  <%= f.button :submit %>
-<% end %>
+
 
 <%= link_to 'Back', user_pages_path(@user) %>
  -->
 
-            <iframe id="frmUpload" src="upload.html" height="0" width="0" style="border: 0px;"></iframe>
+            <h1>Page for <%= @page.published_at.strftime("%Y, %m, %d") %></h1>
             <div class='container-fluid'>
                 <div class='row-fluid' id='content-wrapper'>
-                    
                     <div class="middle">
                         <div class="blue-background emotionals title">
                             <div class="title">
                                 How Was Today?
                             </div>
-                            <div class="emo happy" data-="1">&nbsp</div>
-                            <div class="emo dep" data-="2">&nbsp</div>
-                            <div class="emo angry"  data-="3">&nbsp</div>
-                            <div class="emo success"  data-="4">&nbsp</div>
+                                <% @page.emotions.each do |e| %>
+                                <%= link_to [@user, @page, e], method: :delete do %>
+                                    <div class="emo <%= e.emotion_type %>"></div>
+                                    <% end %> 
+                                <% end %>
+                            <%= simple_form_for :emotion, url: [@user, @page, :emotions] do |f| %>
+                                <%= f.input_field :emotion_type, collection: ["happy", "dep", "angry", "success"] %>
+                                <%= f.button :submit %>
+                            <% end %>
                         </div>
                         <div class="blue-background calHolder title">
                             <div class="title">
@@ -101,23 +85,23 @@
                                         </div>
                                     </div>
                                     <div class='box-content'>
-                                        <textarea class="span12 wysihtml5" cols="40" id="body_" name="body[]" placeholder="Tell sth about your day" rows="5" style="height: 100px;">
-                                        </textarea>
-                                        <div class='text-right'>
-                                            <a href="#" class="btn btn-primary" id="btnSubmit">Submit</a>
-                                        </div>
+                                        <%= simple_form_for(:note, url: [@user, @page, :notes]) do |f| %>
+                                            <%= f.input_field :content, placeholder:"Tell sth about your day", as: :text %>
+                                            <div class='text-right'>
+                                                <%= f.button :submit, class: "btn btn-primary" %>
+                                            </div>
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
                             <br />
-                            <div class="posts">
+                            <%= content_tag_for :div, @page.notes, class: "posts" do |note| %>
                                 <!-- #for item in @collection -->
                                 <div class='span12 box box-nomargin'>
                                     <div class='box-header blue-background'>
                                         <div class='title'>
                                             <div class='icon-envelope-alt'></div>
-                                                me
-                                       
+                                                <%= note.user.profile.display_name %>
                                         </div>
                                         <div class='actions'>
                                             <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
@@ -126,28 +110,33 @@
                                     </div>
                                     <div class='box-content'>
                                         <div class="text">
-                                            Todey sth awesome happend to meeeeee, I got admission yeaaaaaaaaaaah:D
-                                       
+                                          <%= simple_format note.content %>
                                         </div>
+                                        <%= url_for [@page.user, @page, note, :comments] %>
                                         <div class='text-right'>
                                             <div class="cmTxt" style="">
-                                                <input type="text" data-="@id" />
+                                              <%= simple_form_for(:comment, url: [@page.user, @page, note, :comments]) do |f|%>
+                                                  <%= f.input_field :content, placeholder: "Your comment" %>
+                                              <% end %>
                                             </div>
+                                            <% if note.likes.where(user: current_user).count > 0 %>
+                                            <%= link_to 'Unlike!', unlike_user_page_note_path(@page.user, @page, note), method: :delete , class:"btn btn-primary like"%>
+                                            <% else %>
+                                            <%= link_to 'Like!', like_user_page_note_path(@page.user, @page, note), method: :post, class: "btn btn-primary like" %>
+                                            <% end %>
                                             <a href="#" data-="@id" class="btn btn-primary like">Like</a>
                                         </div>
                                         <div class="cms">
-                                            <!-- #for item in @PostComments -->
-                                            <div class="cm">
-                                              <p> sahar: I m soooo happy for uuuuuuu:*</p>
-                                               sara : so proud of uuu
-                                            </div>
-                                            <!-- #end -->
+                                            <%= content_tag_for :p, note.comments, class:"cm" do |comment| %>
+                                                <%= comment.user.profile.display_name %>:
+                                                <%= simple_format comment.content %>
+                                            <% end %>
                                         </div>
                                     </div>
                                 </div>
                                 <br />
                                 <!-- #end -->
-                            </div>
+                            <% end %>
                         </div>
                         <!-- text -->
                     </div>

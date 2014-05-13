@@ -5,12 +5,19 @@ Rails.application.routes.draw do
   	collection do
   	  get :search
   	end
+    
   	member do
       post :follow
       delete :unfollow
+      patch :update_profile
   	end
 
   	resources :pages, only: [:show, :index] do
+
+      collection do
+        get :today
+      end
+
       resources :emotions, only: [:create, :destroy]
   		resources :notes, only: [:edit, :create, :destroy, :update] do
         member do

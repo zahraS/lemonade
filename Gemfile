@@ -30,3 +30,4 @@ gem 'devise'
 gem 'responders'
 gem 'simple_form'
 gem 'puma'
+gem "paperclip"

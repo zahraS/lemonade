@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :set_comments
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @comments.new(comment_params)
+    @comment.user = current_user
     @comment.save
     @page = @note.page
     redirect_to [@page.user, @page]

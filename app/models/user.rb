@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
   has_many :followers, through: :being_followed
   has_many :followings, through: :follows
 
+  has_one :profile
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_save :ensure_profile
+
+  def ensure_profile
+    Profile.create(user: self) unless profile
+  end
 end
