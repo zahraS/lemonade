@@ -31,12 +31,15 @@
             }
             return false;
         });
-        nav.swiperight(function(event, touch) {
-            return $(document).trigger("nav-open");
-        });
-        nav.swipeleft(function(event, touch) {
-            return $(document).trigger("nav-close");
-        });
+
+        /*
+            nav.swiperight(function(event, touch) {
+                return $(document).trigger("nav-open");
+            });
+            nav.swipeleft(function(event, touch) {
+                return $(document).trigger("nav-close");
+            });
+        */
         nav_toggler.on("click", function() {
             if (nav_open) {
                 $(document).trigger("nav-close");

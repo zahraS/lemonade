@@ -1,54 +1,14 @@
-<!-- <p>
-  <strong>Published at:</strong>
-  <%= @page.published_at %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @user.email %>
-</p>
-
-<section>
-  <ul>
-    <%= content_tag_for :li, @page.emotions do |e| %>
-      <%= e.emotion_type %> <%= link_to "x", [@user, @page, e], method: :delete %>
-    <% end %>
-  </ul>
-
-  <%= simple_form_for :emotion, url: [@user, @page, :emotions] do |f| %>
-    <%= f.input :emotion_type, collection: ["happy", "sad", "funny"] %>
-    <%= f.button :submit %>
-  <% end %>
-</section>
-
-<%= content_tag_for :section, @page.notes do |note| %>
-  <p>
-    <%= note.user.email %>: <%= simple_format note.content %>
-  </p>
-  <div>
-    <p>
-      <h3>Likes<h3>
-      <% note.likes.limit(3).each do |like| %>
-        <%= like.user.email %>
-      <% end %>
-      <% if note.likes.count > 3 %>
-        and <%= note.likes.count - 3 %> others
-      <% end %>
-    </p>
-  </div>
-
-<% end %>
-
-<h2>New Note</h2>
-
-
-<%= link_to 'Back', user_pages_path(@user) %>
- -->
-
-            <h1>Page for <%= @page.published_at.strftime("%Y, %m, %d") %></h1>
             <div class='container-fluid'>
                 <div class='row-fluid' id='content-wrapper'>
                     <div class="middle">
+
+                    <div class='page-header tarikh'> 
+                        <h4 class='pull-left'> 
+                            <i class='icon-user'></i> 
+                            <span>Page for <%= @page.published_at.strftime("%Y, %m, %d") %> for "<%= @user.profile.display_name %>"</span> 
+                        </h4>           
+                    </div> 
+
                         <div class="blue-background emotionals title">
                             <div class="title">
                                 How Was Today?
@@ -60,14 +20,14 @@
                                 <% end %>
                             <%= simple_form_for :emotion, url: [@user, @page, :emotions] do |f| %>
                                 <%= f.input_field :emotion_type, collection: ["happy", "dep", "angry", "success"] %>
-                                <%= f.button :submit %>
+                                <%= f.button :submit, class: "btn btn-primary" %>
                             <% end %>
                         </div>
                         <div class="blue-background calHolder title">
                             <div class="title">
                                 Notes on:
                             </div>
-                        <input type="text" id="_cal" data-date-viewmode="years" />
+                        <input type="text" id="calender-field" />
                         </div>
                         <!-- note -->
                         <div class='span6'>
@@ -86,6 +46,7 @@
                                     </div>
                                     <div class='box-content'>
                                         <%= simple_form_for(:note, url: [@user, @page, :notes]) do |f| %>
+
                                             <%= f.input_field :content, placeholder:"Tell sth about your day", as: :text %>
                                             <div class='text-right'>
                                                 <%= f.button :submit, class: "btn btn-primary" %>
@@ -95,6 +56,9 @@
                                 </div>
                             </div>
                             <br />
+
+
+                            <!-- post -->
                             <%= content_tag_for :div, @page.notes, class: "posts" do |note| %>
                                 <!-- #for item in @collection -->
                                 <div class='span12 box box-nomargin'>
@@ -112,10 +76,14 @@
                                         <div class="text">
                                           <%= simple_format note.content %>
                                         </div>
-                                        <%= url_for [@page.user, @page, note, :comments] %>
+<!--                                         <%= url_for [@page.user, @page, note, :comments] %>
+
+
+ -->
                                         <div class='text-right'>
                                             <div class="cmTxt" style="">
                                               <%= simple_form_for(:comment, url: [@page.user, @page, note, :comments]) do |f|%>
+
                                                   <%= f.input_field :content, placeholder: "Your comment" %>
                                               <% end %>
                                             </div>
@@ -124,7 +92,7 @@
                                             <% else %>
                                             <%= link_to 'Like!', like_user_page_note_path(@page.user, @page, note), method: :post, class: "btn btn-primary like" %>
                                             <% end %>
-                                            <a href="#" data-="@id" class="btn btn-primary like">Like</a>
+                                            <!-- <a href="#" data-="@id" class="btn btn-primary like">Like</a> -->
                                         </div>
                                         <div class="cms">
                                             <%= content_tag_for :p, note.comments, class:"cm" do |comment| %>
@@ -281,7 +249,7 @@
                 </div>
       
 
- <script type="text/javascript">
+ <script type="text/plain-text">
         $('#btnSubmit').click(function (e) {
             e.preventDefault();
             var text = $('#body_').val(); // get from editor
@@ -342,40 +310,7 @@
             $("#frmUpload")[0].contentWindow.openUpload();
         });
 
-        $('.cmTxt input').live('keydown' ,function (e) {
-            var item = this;
-            if (e.which == 13) {
-                var text = '';
-                var item = this;
-                $('.cmTxt input').each(function () {
-                    if ($(this).attr('data-') == $(this).attr('data-')) {
-                        if ($(this).val() != '') {
-                            text = $(this).val();
-                            $(item).parent().parent().next('.cms').append('<div class="cm">' + text + '</div>');
-                            $(item).val('');
-                            $.ajax({
-                                cache: false,
-                                async: true,
-                                type: "POST",
-                                dataType: "json",
-                                url: "/submitComment",
-                                data: '{ "text": "' + text + '" }',
-                                contentType: "application/json;charset=utf-8",
-                                success: function (msg) {
-                                    if (msg == true) {
-                                        var newPost = '';
-                                    }
-                                },
-                                error: function (e) {
-
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-        });
-
+        
         $('.toggle-nav.btn.pull-left').click(function (e) {
             e.preventDefault();
             if ($('.toggle-nav.btn.pull-left').hasClass('d_') == false) {

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :users, only: [:search, :show], path: 'profiles' do
+  resources :users, only: [:show], path: 'profiles' do
   	collection do
   	  get :search
   	end
@@ -29,8 +29,13 @@ Rails.application.routes.draw do
   	end
   end
 
-  resources :tasks
-  devise_for :users
+  resources :tasks  
+  resources :birth_dates
 
-  root to: "pages#today"
+  devise_for :users 
+  # , :controllers => {:registrations => "registrations"}
+
+  
+    root to: "pages#today"
+
 end

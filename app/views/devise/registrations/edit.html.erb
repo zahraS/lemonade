@@ -1,12 +1,87 @@
-<h2>Edit Profile</h2>
-<%= simple_form_for current_user.profile, url: update_profile_user_path(current_user) do |f|  %>
-  <%= f.input :display_name, required: true %>
-  <%= f.input :sex, collection: ["Male", "Female"], required: true %>
-  <%= f.input :birth_date, as: :date, start_year: 1930, end_year: Date.today.year, required: true %>
-  <%= f.button :submit %>
+
+<% if current_user.profile.blank? %>
+  <% current_user.profile = Profile.new %>
 <% end %>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class='container-fluid'> 
+        <div class='row-fluid' id='content-wrapper'> 
+            <div class='span12'> 
+                <div class='page-header'> 
+                    <h3 class='pull-left'> 
+                        <i class='icon-user'></i> 
+                        <span>Edit Profile</span> 
+                    </h3>           
+                </div> 
+
+                <div class='row-fluid'> 
+                    <div class='span3 box'> 
+                        <div class='box-content'> 
+                        <% if !current_user.profile.blank? %>
+                          <%= image_tag current_user.profile.avatar.url(:thumb) %>      <% end %>
+                        </div>
+                    </div> 
+                    <div class='span9 box'> 
+                        <div class='box-content box-double-padding'> 
+                         
+                    <%= simple_form_for current_user.profile, url: update_profile_user_path(current_user) do |f|  %>
+                      <%= f.input :display_name, required: true %>
+                      <%= f.input :gender, collection: ["Male", "Female"], required: true %>
+                      <%= f.input :birth_date, as: :date, start_year: 1930, end_year: Date.today.year, required: true %>
+                      <%= f.file_field :avatar %>
+                      <%= f.button :submit %>
+                    <% end %>
+
+                        </div> 
+                    </div> 
+                </div> 
+
+                <div class='page-header'> 
+                    <h3 class='pull-left'> 
+                        <i class='icon-user'></i> 
+                        <span>Edit <%= resource_name.to_s.humanize %></span> 
+                    </h3>           
+                </div> 
+
+                <div class='row-fluid'> 
+                  
+                    <div class='span9 box'> 
+                        <div class='box-content box-double-padding'> 
+                         
+                    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                  <%= f.error_notification %>
+
+                  <div class="form-inputs">
+                    <%= f.input :email, required: true, autofocus: true %>
+
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                    <% end %>
+
+                    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                    <%= f.input :password_confirmation, required: false %>
+                    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                  </div>
+
+                  <div class="form-actions">
+                    <%= f.button :submit, "Update" %>
+                  </div>
+                <% end %>
+
+                        </div> 
+                    </div> 
+                </div> 
+
+
+            </div> 
+        </div> 
+    </div> 
+
+
+
+
+<!-- 
+
+
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -26,4 +101,4 @@
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
-<% end %>
+<% end %> -->

@@ -36,8 +36,8 @@ class UsersController < ApplicationController
   def update_profile
     @user = User.find(params[:id])
     raise if current_user.id != @user.id
-    profile_params = params.require(:profile).permit(:display_name, :sex, :birth_date, :country)
+    profile_params = params.require(:profile).permit(:display_name, :gender, :birth_date, :country, :avatar)
     current_user.profile.update(profile_params)
-    redirect_to edit_user_registration_path
+    redirect_to today_user_pages_path(current_user)
   end
 end

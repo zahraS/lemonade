@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Maiandra GD';
+  src: url("/Maiandra GD.ttf");
+}
+
+body{
+  font-family: 'Maiandra GD';
+}

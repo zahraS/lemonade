@@ -51,78 +51,56 @@
           <div class='span12 box box-nomargin'>
             <div class='box-content box-no-padding'>
               <div class='sortable-container'>
-                <form accept-charset="UTF-8" action="#" class="new-todo" method="post" /><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="CFC7d00LWKQsSahRqsfD+e/mHLqbaVIXBvlBGe/KP+I=" /></div>
-                <input class='span12' id='todo_name' name='todo[name]' placeholder='Type your new todo here...' type='text' />
-                <button class='btn btn-success' type='submit'>
-                  <i class='icon-plus'></i>
-                </button>
-              </form>
-              <div class='date text-contrast'>Today</div>
+                <%= form_for :task, html: { class: "new-todo" } do |f| %>
+                  <%= f.text_field :description, placeholder:"Type your new todo here...", class: "span12" %>
+                  <button class='btn btn-success' type='submit'>
+                    <i class='icon-plus'></i>
+                  </button>
+              <% end %>
+              <div class='date text-contrast'>Todo</div>
               <ul class='unstyled sortable' data-sortable-axis='y' data-sortable-connect='.sortable'>
-                <% content_tag_for :li, @tasks do |task| %>
-                  <tr>
-                    <td><%= task.done %></td>
-                    <td><%= task.description %></td>
-                    <td><%= link_to 'Show', task %></td>
-                    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                    <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
+                <% if @tasks.where(done: [false, nil]).count == 0 %>
+                  <li class="item">Nothing to do..!</li>
                 <% end %>
-                <li class='item'>
-                  <label class='check pull-left todo'>
-                    <input type='checkbox' />
-                    Aut qui enim aspernatur nulla odio ut.
-                  </label>
+                <% @tasks.where(done: [false, nil]).each do |task| %>
+                  <li class="item">
+                  <span class="pull-left todo">
+                    <%= form_for task, html: {class: "form-inline"} do |f| %>
+                      <%= f.hidden_field :done, value: true %>
+                      <%= f.button "Done!", class: "btn btn-primary btn-mini" %>
+                      <%= task.description %>
+                    <% end %>
+                  </span>
                   <div class='actions pull-right'>
-                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                      <i class='icon-pencil'></i>
-                    </a>
-                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
+                    <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link remove has-tooltip", title: "Remove Todo" do %>
                       <i class='icon-remove'></i>
-                    </a>
-                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                      <i class='icon-bookmark-empty'></i>
-                    </a>
+                    <% end %>
                   </div>
-                </li>
-                <li class='done item'>
-                  <label class='check pull-left todo'>
-                    <input checked='checked' type='checkbox' />
-                    Sapiente iste id.
-                  </label>
-                  <div class='actions pull-right'>
-                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                      <i class='icon-pencil'></i>
-                    </a>
-                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
-                      <i class='icon-remove'></i>
-                    </a>
-                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                      <i class='icon-bookmark-empty'></i>
-                    </a>
-                  </div>
-                </li>
-                <li class='item'>
-                  <label class='check pull-left todo'>
-                    <input type='checkbox' />
-                    Enim voluptatem modi aut eaque natus.
-                  </label>
-                  <div class='actions pull-right'>
-                    <a class='btn btn-link edit has-tooltip' data-placement='top' href='#' title='Edit todo'>
-                      <i class='icon-pencil'></i>
-                    </a>
-                    <a class='btn btn-link remove has-tooltip' data-placement='top' href='#' title='Remove todo'>
-                      <i class='icon-remove'></i>
-                    </a>
-                    <a class='btn btn-link important has-tooltip' data-placement='top' href='#' title='Mark as important'>
-                      <i class='icon-bookmark-empty'></i>
-                    </a>
-                  </div>
-                </li>
-
-
-
+                  </li>
+                <% end %>
               </ul>
+              <div class='date text-contrast'>Done</div>
+              <ul class='unstyled sortable' data-sortable-axis='y' data-sortable-connect='.sortable'>
+                <% if @tasks.where(done: true).count == 0 %>
+                  <li class="item">Nothing done (yet!)</li>
+                <% end %>
+
+                <% @tasks.where(done: true).each do |task| %>
+                  <li class="item done">
+                  <span class="pull-left todo">
+                    <%= form_for task, html: {class: "form-inline"} do |f| %>
+                      <%= f.hidden_field :done, value: false %>
+                      <%= f.button "Undone!", class: "btn btn-primary btn-mini" %>
+                      <%= task.description %>
+                    <% end %>
+                  </span>
+                  <div class='actions pull-right'>
+                    <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link remove has-tooltip", title: "Remove Todo" do %>
+                      <i class='icon-remove'></i>
+                    <% end %>
+                  </div>
+                  </li>
+                <% end %>
             </div>    
             <!-- 'sortable-container' -->
           </div>
