@@ -7,13 +7,12 @@ class PagesController < ApplicationController
   end
 
   def today
-    # if current_user.profile.blank?
-    #   redirect_to "/users/edit"
-    #   return
-    # end
-    # @user = current_user 
-    # redirect_to user_page_path(@user, Time.now.strftime("%F"))
-     redirect_to user_page_path(current_user, Time.now.strftime("%F"))
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+    redirect_to user_page_path(@user, Time.now.strftime("%F"))
   end
 
   def show
