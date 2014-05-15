@@ -32,10 +32,8 @@ Rails.application.routes.draw do
   resources :tasks  
   resources :birth_dates
 
-  devise_for :users 
-  # , :controllers => {:registrations => "registrations"}
+  devise_for :users
 
-  
-    root to: "pages#today"
+  root to: "pages#today"
 
 end
